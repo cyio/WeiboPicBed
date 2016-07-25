@@ -192,7 +192,7 @@ Wbpd.prototype = {
         });
 
         //HTML5 paste http://www.zhihu.com/question/20893119
-        $("#res_img").on("paste", function(e) {
+        $(window).on("paste", function(e) {
             var oe = e.originalEvent;
             var clipboardData, items, item;
             if (oe && (clipboardData = oe.clipboardData) && (items = clipboardData.items)) {
