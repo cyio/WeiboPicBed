@@ -63,6 +63,11 @@ function removeImgItem(d) {
 
 $(document).ready(function() {
 
+    var version = chrome.runtime.getManifest().version;
+    $(".current_version").text(version);
+
+    $(document).on('click','input[type=text]',function(){ this.select(); });
+
     $('.close').on('click', function() {
         event.preventDefault();
         window.close();
@@ -77,14 +82,15 @@ $(document).ready(function() {
             html: true
         });
     });
+
     $(".donate").hover(
         function() {
             $(this).addClass('blinking');
         },
         function() {
             $(this).removeClass('blinking');
-        });
-
+        }
+    );
 
     // Build HTML on load
     buildHtml();
@@ -99,15 +105,6 @@ $(document).ready(function() {
             }
         }
     });
-
-    $(".imgsrc").hover(
-        function() {
-            $(this).select();
-        },
-        function() {
-            $(this).blur();
-        }
-    );
 
     $('#defaultIcon').click(function() {
         $('input:checkbox[id="customIcon"]').prop("checked", false);
